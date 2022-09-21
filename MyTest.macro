@@ -1,0 +1,65 @@
+definition {
+
+
+    macro openApplicationMenu {
+
+        Click(locator1="MyTest#APPLICATION_MENU");
+
+    }
+    macro openControlPanel {
+
+        Click(locator1="MyTest#CONTROL_PANEL");
+    }
+    macro verifyConfiguration {
+
+        AssertElementPresent(locator1="MyTest#CONFIGURATION_SECTION");
+    }
+    macro openSimulation {
+
+        Click(locator1="MyTest#SIMULATION_MENU");
+
+    }
+    macro goToCustom {
+
+        Click(locator1="MyTest#CUSTON_BUTTON");
+
+    }
+    macro closeSimulation {
+
+        Click(locator1="MyTest#CLOSE_SIMULATION");
+
+    }
+    macro editSize {
+
+        Type(
+            key_type="${type}",
+            locator1="MyTest#SIMULATION_SIZE",
+            value1="${value}"
+
+        );
+    }
+    macro validValue {
+
+        AssertTextEquals(
+
+            key_type="${type}",
+            locator1="MyTest#SIMULATION_SIZE",
+            value1="${value}"
+
+        );
+    }
+    macro viewEntryContent {
+        AssertElementPresent(
+            key_rowAny = "${rowAny}",
+            key_rowEntry = "${rowEntry}",
+            key_flagName = "${rowLanguage}",
+            locator1 = "MyTest#VALIDATION");
+    }
+
+
+
+
+
+
+    
+}

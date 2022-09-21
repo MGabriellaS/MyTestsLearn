@@ -1,0 +1,85 @@
+@component-name = "portal-web-forms-and-data-lists"
+definition {
+    property testray.main.component.name = "Forms";
+
+    setUp {
+        TestCase.setUpPortalInstance();
+
+        User.firstLoginPG();
+
+        Navigator.openURL();
+    }
+
+    tearDown {
+        User.logoutAndLoginPG(
+            userLoginEmailAddress = "test@liferay.com",
+            userLoginFullName = "Test Test");
+    }
+
+    @description = "Access Portal Global Menu and validate CONFIGURATION string at Control Panel"
+    @priority = "5"
+    test ValidateConfigurationStringAtControlPanel {
+
+        MyTest.openApplicationMenu();
+
+        Pause(locator1="3000");
+
+        MyTest.openControlPanel();
+
+        //Click(locator1= "//span[contains(text(),'Control Panel')]");
+
+        Pause(locator1="3000");
+
+        MyTest.verifyConfiguration();
+
+        Pause(locator1="3000"); 
+    }
+
+    @description = "Set Screen size to custom and validate values"
+    @priority = "5"
+    test SetScreenSizeAndValidateValues {
+
+        MyTest.openSimulation();
+
+        Pause(locator1="3000");
+
+        MyTest.goToCustom();
+
+        Pause(locator1="3000");
+
+        MyTest.editSize(
+
+            type="height",
+            value="1920"
+        );
+
+        MyTest.editSize(
+
+            type="width",
+            value="1080"
+        );
+        
+        MyTest.closeSimulation();
+
+        Pause(locator1="3000");
+
+        MyTest.openSimulation(); 
+        
+        Pause(locator1="3000");
+
+        MyTest.validValue(
+             type="height",
+            value="1920"
+        );
+
+        Pause(locator1="3000");
+
+        MyTest.validValue(
+             type="height",
+            value="1920"
+
+        );
+
+         
+       }
+}

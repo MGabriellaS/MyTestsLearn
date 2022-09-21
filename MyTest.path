@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>MyTest</title>
+</head>
+
+<body>
+<table border="1" cellpadding="1" cellspacing="1">
+<thead>
+<tr><td rowspan="1" colspan="3">MyTest</td></tr>
+</thead>
+
+<tbody>
+<tr>
+	<td>APPLICATION_MENU</td>
+	<td>//button[@data-qa-id='applicationsMenu']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CONTROL_PANEL</td>
+	<td>//li[contains(@id,'ProductNavigationApplicationsMenuPortlet_tab_2')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CONFIGURATION_SECTION</td>
+	<td>//h2[contains(.,'Configuration')]</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>SIMULATION_MENU</td>
+	<td>//a[@data-qa-id='simulation']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CUSTON_BUTTON</td>
+	<td>//span[contains(.,'Custom')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SIMULATION_SIZE</td>
+	<td>//input[@id='_com_liferay_product_navigation_simulation_web_portlet_SimulationPortlet_${key_type}']</td>
+	<td></td>
+</tr>
+
+<tr>
+	<td>CLOSE_SIMULATION</td>
+	<td>//a[@aria-label='Close']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>VALIDATION</td>
+	<td>//*[@data-qa-id='row'][contains(.,'${key_rowEntry}')]//td[contains(.,'${key_rowAny}')]/..//*[*[name()='svg'][contains(@class,'${key_flagName}')]]</td>
+	<td></td>
+</tr>
+
+</tbody>
+
+</table>
+</body>
+</html>

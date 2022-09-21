@@ -1,0 +1,95 @@
+@component-name = "portal-web-forms-and-data-lists"
+definition {
+    property testray.main.component.name = "Forms";
+
+    setUp {
+        TestCase.setUpPortalInstance();
+
+        User.firstLoginPG();
+
+        Navigator.openURL();
+    }
+
+    tearDown {
+        User.logoutAndLoginPG(
+            userLoginEmailAddress = "test@liferay.com",
+            userLoginFullName = "Test Test");
+    }
+    
+    @description = "Create a Form with  two languagens and validate "
+    @priority = "5"
+
+    test FormsExcerciseSix {
+
+        FormsAdmin.addForm();
+
+        Form.editName(formName = "My Form");
+
+		Form.addTextField(fieldPositionNumber = "0");
+
+        Form.editFieldLabelMetal(fieldValue = "Full Name");
+
+        Form.closeSidebar();
+
+        Form.gotoAddField(
+            fieldPositionNumber = "1",
+            fieldType = "Numeric");
+
+        Form.editFieldLabelMetal(fieldValue = "Age");
+
+        Form.addTranslation(localizedLanguage = "Portuguese (Brazil)");
+
+        Form.editFieldLabelMetal(fieldValue = "Idade");
+
+        Form.closeSidebar();
+
+        FormViewBuilder.clickFieldLabel(fieldLabel= "Full Name");
+
+        Form.editFieldLabelMetal(fieldValue = "Nome Completo");
+
+        Form.save();
+
+        Form.publishForm();
+
+        FormsAdminNavigator.gotoPublishedForm();
+
+        FormFields.editText( fieldName = "Full Name",
+			fieldValue = "John Santos");
+
+        FormFields.editText( fieldName = "Age",
+			fieldValue = "21");
+
+        FormPortlet.submitSuccessfully();
+
+        Form.submitAgain();
+
+        FormPortlet.changeLocale(locale= "português-Brasil"); 
+
+        FormFields.editText( fieldName = "Nome Completo", 
+        fieldValue = "Joao Santos"); 
+
+        FormFields.editText( fieldName = "Idade", 
+        fieldValue = "18");
+
+        FormPortlet.submitSuccessfully();
+
+        Navigator.openURL();
+
+        ProductMenu.gotoPortlet(
+        category = "Content & Data",
+        portlet = "Forms");
+
+        FormsAdminNavigator.gotoViewEntries();
+
+        MyTest.viewEntryContent(
+            rowAny ="John Santos",
+            rowEntry ="21",
+            rowLanguage="en-us");
+
+        MyTest.viewEntryContent(
+            rowAny ="Joao Santos",
+            rowEntry ="18",
+            rowLanguage="pt-br");
+              
+        }
+}
