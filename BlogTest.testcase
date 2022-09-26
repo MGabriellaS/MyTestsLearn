@@ -140,10 +140,8 @@ definition {
         task ("This bloc search for a entry that doesn't exists and show the menssage that no results were found"){
             Navigator.gotoPage(pageName = "Blogs Page");
             SearchPortlets.searchEmbedded(searchTerm = ""Blogs Entry Title3"");
+			BlogsEntry.viewNoPG(entryTitle = "Blogs Entry Title3");
             SearchResultPortlet.viewNoSearchResults(searchTerm = ""Blogs Entry Title3"");
         }
     }
-}
-
-
 }
